@@ -61,14 +61,12 @@ div.olLayerDiv {
    text-align: center;
 }
 .olControlLoadingPanel {
-    background-image:url(img/loading.gif);
-    margin-left: 30%;
-    margin-top: 50%;
-    position: relative;
+    background: url(img/loading.gif) center no-repeat;
+    position: absolute;
+    top: 8px;
+    right: 8px;
     width: 195px;
     height: 11px;
-    background-position:center;
-    background-repeat:no-repeat;
     display: none;
 }
 .olControlPermalink {
