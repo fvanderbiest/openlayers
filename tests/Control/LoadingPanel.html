@@ -1,0 +1,45 @@
+<html>
+<head>
+  <script src="../OLLoader.js"></script>
+  <script type="text/javascript">
+    var map;
+    OpenLayers.Lang.setCode('en');
+
+    function test_Control_LoadingPanel_constructor (t) {
+        t.plan( 2 );
+    
+        control = new OpenLayers.Control.LoadingPanel();
+        t.ok( control instanceof OpenLayers.Control.LoadingPanel, "new OpenLayers.Control.LoadingPanel returns object" );
+        t.eq( control.displayClass,  "olControlLoadingPanel", "displayClass is correct" );
+    }
+
+    function test_Control_LoadingPanel_draw (t) {
+        t.plan( 2 );
+
+        map = new OpenLayers.Map('map');
+        control = new OpenLayers.Control.LoadingPanel();
+        map.addControl(control);
+
+        var div = control.draw();
+        t.ok( control.div != null, "draw makes a div" );
+        t.ok( div != null, "draw returns its div" );
+    }
+    
+    function test_Control_LoadingPanel_visibility (t) {
+        t.plan(2);
+        
+        control = new OpenLayers.Control.LoadingPanel({
+            div: OpenLayers.Util.getElement('loadingpanel')
+        });
+        t.eq(control.getVisible(), true, "control is visible by default");
+        control.toggle()
+        t.eq(control.getVisible(), false, "control visibility toggled successfully");
+    }
+
+  </script>
+</head>
+<body>
+    <div id="map" style="width: 1024px; height: 512px;"/>
+    <div id="loadingpanel" style="width:200px; height:10px;" />
+</body>
+</html>
