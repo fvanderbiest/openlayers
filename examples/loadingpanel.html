@@ -45,7 +45,10 @@
         }
 
         function toggleLoadingPanel() {
-            map.getControlsByClass('OpenLayers.Control.LoadingPanel')[0].toggle();
+            var control = map.getControlsByClass('OpenLayers.Control.LoadingPanel')[0];
+            control.toggle();
+            document.getElementById('toggle').innerHTML = control.getVisible() ? 
+                'hide loading panel' : 'show loading panel';
         }
     </script>
   </head>
@@ -55,7 +58,7 @@
         control, monitor, loading, indicator
     </div>
     <div id="shortdesc">Demonstrates the use of the LoadingPanel control to monitor tile loading.</div>
-    <a onclick="toggleLoadingPanel()">Toggle loading panel</a>
+    <a onclick="toggleLoadingPanel()" id="toggle">hide loading panel</a>
     <div id="map"></div>
   </body>
 </html>
